@@ -1,4 +1,4 @@
-# profiteer
+# profiteer_rpc
 
 ## 1. 项目介绍
 
@@ -6,13 +6,21 @@
 
 
 ## 2. 项目结构
+> 对内提供RPC用户基础服务接口
 
-* 对内提供RPC用户基础服务接口
-* 对外暴露HTTP接口
+| 目录或文件 | 说明 |
+| -------- | --- | 
+| config   | 环境、数据库等配置 |
+| handlers | 具体处理逻辑 |
+| libs     | 项目的组件等 |
+| models   | 数据库crud  |
+| test     | 单元测试    |
+| utils    | 全局通用方法 |
+| dispacher.py | handler 路由 |
+| server.py | 项目启动入口 |
 
 
 ## 3. 异步化
-
 > 在服务中，异步化主要分布在两个地方， 一个是 Dispatcher 处，使用`gevent.pool`限流; 另一个是在model层，异步化处理数据库操作，业务handler无需考虑是否异步。
 
 * rpc服务在 Dispatcher 使用`gevent`的`pool.spawn`限制同时处理的客户端请求数，与数据库连接池数量一致，可以稍比数据库连接池数量小, 且必须指定超时时间
