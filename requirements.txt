@@ -1,0 +1,9 @@
+gevent==1.4.0
+SQLAlchemy==1.3.13  # postgresql + orm
+psycopg2==2.8.3
+psycogreen==1.0.2
+pymongo==3.8.0
+redis==3.3.4
+thriftpy2==0.4.10
+pytest==5.4.1
+flake8==3.7.9
