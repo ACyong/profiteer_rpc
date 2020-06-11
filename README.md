@@ -8,6 +8,8 @@
 ## 2. 项目结构
 > 对内提供RPC用户基础服务接口
 
+项目一级目录
+
 | 目录或文件 | 说明 |
 | -------- | --- | 
 | config   | 环境、数据库等配置 |
@@ -18,6 +20,28 @@
 | utils    | 全局通用方法 |
 | dispacher.py | handler 路由 |
 | server.py | 项目启动入口 |
+
+libs 二级目录
+
+| 目录或文件 | 说明 |
+| -------- | --- | 
+| cache    | Redis client |
+| mongo    | mongod client |
+| pg       | postgresql client |
+
+utils 二级目录
+
+| 目录或文件 | 说明 |
+| -------- | --- | 
+| logger   | log 输出 |
+| thrift   | thrift 定义 |
+
+* python 版本使用3.6.5；
+* 使用`thriftpy2`提供的rpc框架；
+* 使用`gevent`做限流及异步化；
+* 使用`SQLAlchemy`的orm做pg数据的crud；
+* 使用`pytest`做单元测试
+* 数据库使用`postgresql`、`MongoDB`、`Redis`
 
 
 ## 3. 异步化
@@ -63,3 +87,8 @@ class User(Base):
         results = [job.value for job in jobs]
         return results
 ```
+
+
+## 部署
+
+待定
