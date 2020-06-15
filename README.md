@@ -18,6 +18,7 @@
 | models   | 数据库crud  |
 | test     | 单元测试    |
 | utils    | 全局通用方法 |
+| wiki     | 文档       |
 | dispacher.py | handler 路由 |
 | server.py | 项目启动入口 |
 
@@ -47,7 +48,7 @@ utils 二级目录
 ## 3. 异步化
 > 在服务中，异步化主要分布在两个地方， 一个是 Dispatcher 处，使用`gevent.pool`限流; 另一个是在model层，异步化处理数据库操作，业务handler无需考虑是否异步。
 
-* rpc服务在 Dispatcher 使用`gevent`的`pool.spawn`限制同时处理的客户端请求数，与数据库连接池数量一致，可以稍比数据库连接池数量小, 且必须指定超时时间
+* 在 Dispatcher 处使用`gevent`的`pool.spawn`限制同时处理的客户端请求数，与数据库连接池数量一致，可以稍比数据库连接池数量小, 且必须指定超时时间
 
 例：
 ```python
@@ -91,4 +92,16 @@ class User(Base):
 
 ## 部署
 
-待定
+### 1. 创建配置文件夹，并编辑配置文件
+```shell script
+cd ~
+mkdir "profiteer"
+cd profiteer
+vim config.ini
+```
+
+### 2. 将定义好的配置文件加入系统环境变量
+```shell script
+export PROFITEER_CONFIG_PATH=/profiteer/config.ini
+```
+
