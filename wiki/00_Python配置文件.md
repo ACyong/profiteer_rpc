@@ -35,6 +35,7 @@ class TestingConfig(Config):
     """
     TESTING = True
 ```
+
 ```python
 """ 
 @file: config/__init__.py
@@ -74,14 +75,41 @@ print(CONFIG.DATABASE_URI)
 ## 2. 使用外部配置文件
 > 利用外部的配置文件来存储配置信息，和代码独立开来。使用环境变量来指定配置文件的存放路径，由Python代码来读取配置文件获取配置。配置文件常见格式json、yaml或者ini等。
 
-例：
+设置环境变量可以修改profile文件，修改`/etc/profile`文件（对所有用户都是有效的）
 ```shell script
-export CONFIG_PATH = xxx
+vi /etc/profile
 ```
+
+在里面加入:
+```
+export PROFITEER_CONFIG_PATH=xxx
+```
+
+或是修改.bashrc文件：修改`~/.bashrc`文件（每个用户目录下都有，ls -all，单独用户有效）
+```shell script
+cd ~
+vi .bashrc
+```
+
+在里面加入：
+```shell script
+export PROFITEER_CONFIG_PATH=xxx
+```
+
+添加完环境变量需要`source`一下修改的文件
+```shell script
+source .bashrc
+```
+
+例：
 ```ini
+""" 
+@file: xxx
+"""
 [PG]
 DATABASE_URI=xxx
 ```
+
 ```python
 """ 
 @file: config/config.py
