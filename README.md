@@ -105,3 +105,7 @@ vim config.ini
 export PROFITEER_CONFIG_PATH=/profiteer/config.ini
 ```
 
+### 3. 测试rpc服务端启动命令
+```shell script
+python server.py -H host -P port
+```

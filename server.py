@@ -27,7 +27,7 @@ parser.add_argument('-H', '--host', help="server listen host")
 parser.add_argument('-P', '--port', type=int, help="server listen port")
 
 
-class CustomTProcessor(TProcessor):
+class _TProcessor(TProcessor):
     def process_in(self, iprot):
         api, type, seqid = iprot.read_message_begin()
         if api not in self._service.thrift_services:
@@ -45,7 +45,7 @@ class CustomTProcessor(TProcessor):
         api_args = [args.thrift_spec[k][1] for k in sorted(args.thrift_spec)]
 
         if api != 'ping':
-            # get client IP address
+            # get client IP address 为了拿到客户端连接的log，出此下策，没找到啥好办法
             peername = iprot.trans.sock.getpeername()
             peername = peername if peername else ["unknown_ip", "unknown_port"]
             client_ip, client_port = peername
@@ -59,12 +59,12 @@ class CustomTProcessor(TProcessor):
         return api, seqid, result, call
 
 
-def custom_make_server(service, handler,
-                       host="localhost", port=9090, unix_socket=None,
-                       proto_factory=TBinaryProtocolFactory(),
-                       trans_factory=TBufferedTransportFactory(),
-                       client_timeout=3000, certfile=None):
-    processor = CustomTProcessor(service, handler)
+def _make_server(service, handler,
+                 host="localhost", port=9090, unix_socket=None,
+                 proto_factory=TBinaryProtocolFactory(),
+                 trans_factory=TBufferedTransportFactory(),
+                 client_timeout=3000, certfile=None):
+    processor = _TProcessor(service, handler)
 
     if unix_socket:
         server_socket = TServerSocket(unix_socket=unix_socket)
@@ -90,8 +90,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if not args.host or not args.port:
         raise Exception("please enter host and port")
-    server = custom_make_server(user_thrift.UserService,
-                                Dispatcher,
-                                args.host,
-                                args.port, )
+    server = _make_server(user_thrift.UserService, Dispatcher,
+                          args.host, args.port, )
     server.serve()
