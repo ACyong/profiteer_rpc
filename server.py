@@ -19,7 +19,7 @@ from thriftpy2.transport import (TBufferedTransportFactory, TServerSocket,
 from dispacher import Dispatcher
 from utils.logger import logger, set_up_logger
 
-from utils.thrift.user_thrift import user_thrift
+from libs.rpc.thrift_definition.user_thrift import user_thrift
 
 set_up_logger()
 parser = argparse.ArgumentParser()
@@ -45,7 +45,7 @@ class _TProcessor(TProcessor):
         api_args = [args.thrift_spec[k][1] for k in sorted(args.thrift_spec)]
 
         if api != 'ping':
-            # get client IP address 为了拿到客户端连接的log，出此下策，没找到啥好办法
+            # get client IP address 为了拿到客户端连接的log，没啥好办法
             peername = iprot.trans.sock.getpeername()
             peername = peername if peername else ["unknown_ip", "unknown_port"]
             client_ip, client_port = peername

@@ -1,8 +1,8 @@
-# profiteer_rpc
+# profiteer_user_rpc
 
 ## 1. 项目介绍
 
-一个无聊的项目，还不知道做什么
+一个无聊的项目，还不知道做什么；计划`oath_rpc`提供账号登录、注册和授权服务，`user_rpc`提供用户信息服务
 
 
 ## 2. 项目结构
@@ -29,6 +29,7 @@ libs 二级目录
 | cache    | Redis client |
 | mongo    | mongod client |
 | pg       | postgresql client |
+| rpc      | 调用其他 rpc |
 
 utils 二级目录
 
