@@ -29,14 +29,13 @@ libs 二级目录
 | cache    | Redis client |
 | mongo    | mongod client |
 | pg       | postgresql client |
-| rpc      | 调用其他 rpc |
+| rpc      | 调用\定义 rpc 服务 |
 
 utils 二级目录
 
 | 目录或文件 | 说明 |
 | -------- | --- | 
 | logger   | log 输出 |
-| thrift   | thrift 定义 |
 
 * python 版本使用3.6.5；
 * 使用`thriftpy2`提供的rpc框架；
@@ -96,14 +95,14 @@ class User(Base):
 ### 1. 创建配置文件夹，并编辑配置文件
 ```shell script
 cd ~
-mkdir "profiteer"
-cd profiteer
+mkdir ".profiteer"
+cd .profiteer
 vim config.ini
 ```
 
 ### 2. 将定义好的配置文件加入系统环境变量
 ```shell script
-export PROFITEER_CONFIG_PATH=/profiteer/config.ini
+export PROFITEER_CONFIG_PATH=~/.profiteer/config.ini
 ```
 
 ### 3. 测试rpc服务端启动命令

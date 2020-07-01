@@ -19,7 +19,7 @@ from thriftpy2.transport import (TBufferedTransportFactory, TServerSocket,
 from dispacher import Dispatcher
 from utils.logger import logger, set_up_logger
 
-from libs.rpc.thrift_definition.user_thrift import user_thrift
+from libs.rpc.definition.user_thrift import user_thrift
 
 set_up_logger()
 parser = argparse.ArgumentParser()
