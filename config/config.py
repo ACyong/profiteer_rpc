@@ -11,6 +11,10 @@ except Exception:
 config = ConfigParser()
 config.read(CONFIG_PATH)
 
+# ENV
+ENV = config["ENV"]
+CURRENT_ENV = ENV.get("CURRENT_ENV")
+
 # PG
 PG = config["PG"]
 PG_POOL_SIZE = PG.get("PG_POOL_SIZE")

@@ -17,14 +17,14 @@ from thriftpy2.transport import (TBufferedTransportFactory, TServerSocket,
                                  TSSLServerSocket)
 
 from dispacher import Dispatcher
+from models.set_up import set_up_models
 from utils.logger import logger, set_up_logger
-
 from libs.rpc.definition.user_thrift import user_thrift
 
+# 初始化日志
 set_up_logger()
-parser = argparse.ArgumentParser()
-parser.add_argument('-H', '--host', help="server listen host")
-parser.add_argument('-P', '--port', type=int, help="server listen port")
+# 初始化分表，防并发
+set_up_models()
 
 
 class _TProcessor(TProcessor):
@@ -85,6 +85,10 @@ def _make_server(service, handler,
                            iprot_factory=proto_factory,
                            itrans_factory=trans_factory)
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('-H', '--host', help="server listen host")
+parser.add_argument('-P', '--port', type=int, help="server listen port")
 
 if __name__ == '__main__':
     args = parser.parse_args()
