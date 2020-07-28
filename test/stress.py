@@ -11,21 +11,20 @@ monkey.patch_all()  # noqa
 import gevent
 from thriftpy2.rpc import make_client
 
-from libs.rpc.definition.user_thrift import user_thrift
+from rpc_user.libs.rpc.definition.user_thrift import user_thrift
 
 qps = 0
 fail = 0
 size = 2  # client并发数
 
 
-# 172.16.10.60
 def init_clients(size):
     clients = list()
     for i in range(size // 2):
         clients.append(make_client(
             user_thrift.UserService, '127.0.0.1', 9000))
         clients.append(make_client(
-            user_thrift.UserService, '127.0.0.1', 9001))
+            user_thrift.UserService, '127.0.0.1', 9000))
     return clients
 
 
@@ -59,7 +58,9 @@ def send_req_a():
     while True:
         user_id = random.randint(10000, 50000)
         try:
-            result = client.getProfile(user_id)
+            payload = user_thrift.User(**{
+                "id": user_id, "password": "123456", "state": 0})
+            result = client.createUser(payload)
         except Exception as e:
             fail += 1
         qps += 1

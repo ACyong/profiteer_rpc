@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from models.user import User
-from utils.logger import logger
+from rpc_user.models.user import User
+from rpc_user.utils.logger import logger
 
 
 MODEL_2_TAIL = [User]

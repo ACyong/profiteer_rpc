@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from thriftpy2.rpc import make_client
 
-from utils.logger import logger
+from rpc_user.utils.logger import logger
 
 
 class BaseRPClient(object):
@@ -61,8 +61,9 @@ class BaseRPClient(object):
     def _is_alive(cls, client):
         try:
             status = client.ping() == 'pong'
-        except Exception as _:
+        except Exception as e:
             status = False
+            logger.info("Service alive fail: {}".format(str(e)))
         return status
 
     @classmethod

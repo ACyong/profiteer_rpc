@@ -2,8 +2,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from config.config import PG_URI, PG_POOL_SIZE, PG_MAX_OVER, PG_POOL_RECYCLE, \
-    PG_POOL_TIMEOUT
+from rpc_user.config.config import PG_URI, PG_POOL_SIZE, PG_MAX_OVER, \
+    PG_POOL_RECYCLE, PG_POOL_TIMEOUT
 
 engine = create_engine(
     PG_URI,

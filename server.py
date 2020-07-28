@@ -17,9 +17,9 @@ from thriftpy2.transport import (TBufferedTransportFactory, TServerSocket,
                                  TSSLServerSocket)
 
 from dispacher import Dispatcher
-from models.set_up import set_up_models
-from utils.logger import logger, set_up_logger
-from libs.rpc.definition.user_thrift import user_thrift
+from rpc_user.models.set_up import set_up_models
+from rpc_user.utils.logger import logger, set_up_logger
+from rpc_user.libs.rpc.definition.user_thrift import user_thrift
 
 # 初始化日志
 set_up_logger()

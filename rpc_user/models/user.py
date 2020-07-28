@@ -2,7 +2,9 @@
 from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer, SmallInteger, String
-from models.base import Base
+
+from rpc_user.libs.pg.client import get_user_session
+from rpc_user.models.base import Base
 
 
 class User(object):
@@ -31,3 +33,14 @@ class User(object):
         })
         cls._mapper[class_name] = ModelClass
         return ModelClass
+
+    @classmethod
+    def create(cls, user_id, payload):
+        model = cls.model(user_id)
+        user = model(
+            id=user_id,
+            **payload
+        )
+        session = get_user_session()
+        session.add(user)
+        session.commit()
