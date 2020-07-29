@@ -52,7 +52,7 @@ def print_qps():
     print("5min, Total QPS:{}, Total Fail: {}".format(total_qps, total_fail))
 
 
-def send_req_a():
+def send_request():
     global qps, fail
     client = get_client()
     while True:
@@ -60,8 +60,9 @@ def send_req_a():
         try:
             payload = user_thrift.User(**{
                 "id": user_id, "password": "123456", "state": 0})
-            result = client.createUser(payload)
+            client.createUser(payload)
         except Exception as e:
+            print("send_request fail: %s" % str(e))
             fail += 1
         qps += 1
 
@@ -70,6 +71,6 @@ if __name__ == "__main__":
     g1 = gevent.spawn(print_qps)
     gs = [g1]
     for _ in range(size):
-        g = gevent.spawn(send_req_a)
+        g = gevent.spawn(send_request)
         gs.append(g)
     gevent.joinall(gs)

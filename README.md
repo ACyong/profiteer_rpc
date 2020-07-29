@@ -1,4 +1,4 @@
-# profiteer_user_rpc
+# profiteer
 
 ## 1. 项目介绍
 
