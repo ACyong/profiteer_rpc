@@ -44,3 +44,12 @@ class User(object):
         session = get_user_session()
         session.add(user)
         session.commit()
+
+    @classmethod
+    def get(cls, user_id):
+        model = cls.model(user_id)
+        session = get_user_session()
+        result = session.query(model).filter(
+            model.id == user_id).first()
+        session.close()
+        return result
