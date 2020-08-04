@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from rpc_user.libs.rpc.base_client import BaseRPClient
-from rpc_user.libs.rpc.definition.user_thrift import user_thrift
+from rpc_user.libs.rpc.user.user_thrift import user_thrift
 
 
 class UserRPClient(BaseRPClient):
