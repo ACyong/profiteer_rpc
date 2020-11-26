@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from rpc_user.models.user import User
+from app.user.models.user import User
 
 
 class TestUser(object):

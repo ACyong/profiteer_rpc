@@ -2,7 +2,6 @@
 """
 压力测试
 """
-import random
 
 from gevent import monkey
 
@@ -11,7 +10,7 @@ monkey.patch_all()  # noqa
 import gevent
 from thriftpy2.rpc import make_client
 
-from rpc_user.libs.rpc.user.user_thrift import user_thrift
+from libs.rpc.user.user_thrift import user_thrift
 
 qps = 0
 fail = 0

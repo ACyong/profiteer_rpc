@@ -43,7 +43,7 @@ class TestingConfig(Config):
 
 import sys
 
-from rpc_user.config import config
+from config.config import config
 
 
 if __name__ == '__main__':
@@ -64,7 +64,7 @@ if __name__ == '__main__':
 """ 
 @file: libs/pg/client.py
 """
-from rpc_user.config import CONFIG
+from config import CONFIG
 
 print(CONFIG.DATABASE_URI)
 ```

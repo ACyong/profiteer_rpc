@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from thriftpy2.rpc import make_client
 
-from rpc_user.utils.logger import logger
+from utils.logger import logger
 
 
 class BaseRPClient(object):

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from gevent.pool import Pool
 
-from rpc_user.config.config import GEVENT_POOL_SIZE
-from rpc_user.handlers.user import UserHandler
+from config.config import GEVENT_POOL_SIZE
+from app.user.handlers.user import UserHandler
 
 
 # GEVENT_POOL_SIZE 跟pg数据库 PG_POOL_SIZE 相同

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import redis
 
-from rpc_user.config.config import REDIS_URI, REDIS_TIMEOUT, \
+from config.config import REDIS_URI, REDIS_TIMEOUT, \
     REDIS_CONNECT_TIMEOUT, REDIS_POOL_SIZE
 
 connection_pool = redis.ConnectionPool.from_url(REDIS_URI)

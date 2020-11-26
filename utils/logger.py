@@ -3,7 +3,7 @@ import atexit
 import logging
 from logging.handlers import MemoryHandler
 
-from rpc_user.config.config import CURRENT_ENV
+from config.config import CURRENT_ENV
 
 LOGGING_MSG_FORMAT = '%(asctime)s %(levelname)s %(module)s.py ' \
                      'line:%(lineno)d %(message)s'

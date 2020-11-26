@@ -17,9 +17,9 @@ from thriftpy2.transport import (TBufferedTransportFactory, TServerSocket,
                                  TSSLServerSocket)
 
 from dispacher import Dispatcher
-from rpc_user.models.set_up import set_up_models
-from rpc_user.utils.logger import logger, set_up_logger
-from rpc_user.libs.rpc.user.user_thrift import user_thrift
+from app.user.models.set_up import set_up_models
+from utils.logger import logger, set_up_logger
+from libs.rpc.user.user_thrift import user_thrift
 
 # 初始化日志
 set_up_logger()
@@ -59,11 +59,11 @@ class _TProcessor(TProcessor):
         return api, seqid, result, call
 
 
-def _make_server(service, handler,
-                 host="localhost", port=9090, unix_socket=None,
-                 proto_factory=TBinaryProtocolFactory(),
-                 trans_factory=TBufferedTransportFactory(),
-                 client_timeout=3000, certfile=None):
+def make_server(service, handler,
+                host="localhost", port=9090, unix_socket=None,
+                proto_factory=TBinaryProtocolFactory(),
+                trans_factory=TBufferedTransportFactory(),
+                client_timeout=3000, certfile=None):
     processor = _TProcessor(service, handler)
 
     if unix_socket:
@@ -94,6 +94,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if not args.host or not args.port:
         raise Exception("please enter host and port")
-    server = _make_server(user_thrift.UserService, Dispatcher,
-                          args.host, args.port, )
+    server = make_server(user_thrift.UserService, Dispatcher,
+                         args.host, args.port, )
     server.serve()

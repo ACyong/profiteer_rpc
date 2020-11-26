@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 import pytest
 
-from rpc_user.config.config import CURRENT_ENV
-from rpc_user.libs.pg.client import engine
-from rpc_user.models.base import Base
-from rpc_user.models.set_up import set_up_models
+from config.config import CURRENT_ENV
+from libs.pg.client import engine
+from app.user.models.base import Base
+from app.user.models.set_up import set_up_models
 
 
 @pytest.fixture(scope="session", autouse=True)

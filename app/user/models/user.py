@@ -3,8 +3,8 @@ from datetime import datetime
 
 from sqlalchemy import Column, DateTime, Integer, SmallInteger, String
 
-from rpc_user.libs.pg.client import get_user_session
-from rpc_user.models.base import Base
+from libs.pg.client import get_user_session
+from app.user.models.base import Base
 
 
 class User(object):
