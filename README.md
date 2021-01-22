@@ -97,12 +97,12 @@ class User(Base):
 cd ~
 mkdir ".profiteer"
 cd .profiteer
-vim config.ini
+vim rpc_config.ini
 ```
 
 ### 2. 将定义好的配置文件加入系统环境变量
 ```shell script
-export PROFITEER_CONFIG_PATH=~/.profiteer/config.ini
+export PROFITEER_CONFIG_PATH=~/.profiteer/rpc_config.ini
 ```
 
 ### 3. 测试rpc服务端启动命令

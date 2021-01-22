@@ -82,7 +82,7 @@ vi /etc/profile
 
 在里面加入:
 ```
-export PROFITEER_CONFIG_PATH=xxx
+export PROFITEER_RPC_CONFIG_PATH=xxx
 ```
 
 或是修改.bashrc文件：修改`~/.bashrc`文件（每个用户目录下都有，ls -all，单独用户有效）
@@ -92,8 +92,8 @@ vi .bashrc
 ```
 
 在里面加入：
-```shell script
-export PROFITEER_CONFIG_PATH=xxx
+```
+export PROFITEER_RPC_CONFIG_PATH=xxx
 ```
 
 添加完环境变量需要`source`一下修改的文件
@@ -118,7 +118,7 @@ import os
 from configparser import ConfigParser
 
 try:
-    CONFIG_PATH = os.environ[str('PROFITEER_CONFIG_PATH')]
+    CONFIG_PATH = os.environ[str('PROFITEER_RPC_CONFIG_PATH')]
 except Exception:
     raise ValueError
 

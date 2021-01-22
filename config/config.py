@@ -3,7 +3,7 @@ import os
 from configparser import ConfigParser
 
 try:
-    CONFIG_PATH = os.environ.get('PROFITEER_CONFIG_PATH')
+    CONFIG_PATH = os.environ.get('PROFITEER_RPC_CONFIG_PATH')
 except Exception:
     raise ValueError
 
@@ -15,8 +15,11 @@ config.read(CONFIG_PATH)
 ENV = config["ENV"]
 CURRENT_ENV = ENV.get("CURRENT_ENV")
 
+
+# gevent 配置
 GEVENT = config["GEVENT"]
 GEVENT_POOL_SIZE = int(GEVENT.get("GEVENT_POOL_SIZE", "20"))
+
 
 # PG
 PG = config["PG"]
